@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "outDir": ".dest-tsc",
+        "outDir": "out",
         "module": "commonjs",
         "moduleResolution": "node",
         "target": "es5",
