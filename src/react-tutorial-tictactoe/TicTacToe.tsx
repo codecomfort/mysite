@@ -23,7 +23,8 @@ export class Game extends React.Component<any, any> {
       return;
     }
 
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    // squares[i] = this.state.xIsNext ? 'X' : 'O';
+    squares[i] = this.state.xIsNext ? '○' : '×';
 
     this.setState({
       history: history.concat([{
