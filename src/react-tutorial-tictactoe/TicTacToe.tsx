@@ -66,16 +66,19 @@ export class Game extends React.Component<any, any> {
     });
 
     return (
-      <div className="game">
-        <div>
-          <Board
-            squares={current.squares}
-            onClick={(i) => this.handleClick(i)}
-          />
-        </div>
-        <div className="game-info">
-          <div>{status}</div>
-          <ol>{moves}</ol>
+      <div>
+        <h2>Tic Tac Toe サンプル</h2>
+        <div className="game">
+          <div>
+            <Board
+              squares={current.squares}
+              onClick={(i) => this.handleClick(i)}
+            />
+          </div>
+          <div className="game-info">
+            <div>{status}</div>
+            <ol>{moves}</ol>
+          </div>
         </div>
       </div>
     );

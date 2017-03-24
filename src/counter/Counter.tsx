@@ -12,6 +12,7 @@ export class Counter extends React.Component<Props, {}> {
   render() {
     return (
       <div>
+        <h2>Counter サンプル</h2>
         <p>score: {this.props.value.num}</p>
         <RaisedButton onClick={() => this.props.actions.increment(3)} label="Increment 3"/>
         <RaisedButton onClick={() => this.props.actions.decrement(2)} label="Decrement 2"/>
