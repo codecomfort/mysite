@@ -80,6 +80,7 @@ export class Game extends React.Component<any, any> {
             <ol>{moves}</ol>
           </div>
         </div>
+        <a href="https://facebook.github.io/react/tutorial/tutorial.html" target="_blank">Tutorial: Intoro To React</a>
       </div>
     );
   }
