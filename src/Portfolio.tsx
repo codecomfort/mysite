@@ -5,6 +5,7 @@ import TicTacToe from './react-tutorial-tictactoe/TicTacToe';
 import Paper from 'material-ui/Paper';
 import MuiMenu from 'material-ui/Menu';
 import MuiMenuItem from 'material-ui/MenuItem';
+import AwsSample01 from './aws-api-sample01/View';
 
 const styles = {
   paperStyle: {
@@ -28,10 +29,15 @@ const Portfolio = () => (
         <MuiMenuItem>
           <Link to="/portfolio/react-tutorial-tictactoe">React Tutorial Tic Tac Toe</Link>
         </MuiMenuItem>
+        <MuiMenuItem>
+          <Link to="/portfolio/aws-api-sample01">AWS ApiGateway Lambda Sample</Link>
+        </MuiMenuItem>
       </MuiMenu>
     </Paper>
     <Route path="/portfolio/counter" component={ Counter }/>
     <Route path="/portfolio/react-tutorial-tictactoe" component={ TicTacToe }/>
+    <Route path="/portfolio/aws-api-sample01" component={ AwsSample01 }/>
+
   </div>
 );
 
