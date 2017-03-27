@@ -2,7 +2,7 @@ import * as React from 'react';
 import TextField from 'material-ui/TextField';
 import FontIcon from 'material-ui/FontIcon';
 import IconButton from 'material-ui/IconButton';
-
+import {Tabs, Tab} from 'material-ui/Tabs';
 interface Props {
   json: object;
 }
@@ -31,6 +31,18 @@ const View = (props: Props) => (
         </i>
       </IconButton>
     </div>
+    <Tabs>
+      <Tab label="Preview">
+        <div>
+          プレビューデータ
+        </div>
+      </Tab>
+      <Tab label="JSON">
+        <div>
+          JSON データ
+        </div>
+      </Tab>
+    </Tabs>
   </div>
 );
 
