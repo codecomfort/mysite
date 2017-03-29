@@ -70,7 +70,12 @@ export default class View2 extends React.Component<View2Props, View2States> {
 
     const recipes = this.getRecipes(input);
     if (recipes.length === 0) {
-      alert('該当なし');
+      this.setState({
+        jsonResult: {
+          httpStatus: '200',
+          recipes: []
+        }
+      });
       return;
     }
 
@@ -86,8 +91,6 @@ export default class View2 extends React.Component<View2Props, View2States> {
     const {} = this.props;
     const {jsonResult} = this.state;
 
-    const notFoundTab = <div>データが存在しません</div>;
-    const foundTab = (val: string) => <div>{val}</div>;
     return <div>
       <h2>AWS サンプル01</h2>
       <div>
@@ -106,10 +109,8 @@ export default class View2 extends React.Component<View2Props, View2States> {
       </div>
       <Tabs>
         <Tab label="JSON">
-          {
-            isNullOrUndefined(jsonResult.recipes) || jsonResult.recipes.length === 0
-              ? notFoundTab
-              : foundTab(jsonResult.recipes[0].key2)
+          {// 本当は <JsonDiv recipes={jsonResult.recipes} /> のようにコンポーネントとして切り出したいが、なぜかコンパイルエラーになる
+            JsonDiv(jsonResult.recipes)
           }
         </Tab>
         <Tab label="Preview">
@@ -121,3 +122,7 @@ export default class View2 extends React.Component<View2Props, View2States> {
     </div>
   }
 }
+
+const JsonDiv = (recipes: Recipe[]) => { return isNullOrUndefined(recipes) || recipes.length === 0 ? notFound() : found(recipes[0].key2)};
+const notFound = () => <div>データが存在しません</div>;
+const found = (val: string) => <div>{val}</div>;
