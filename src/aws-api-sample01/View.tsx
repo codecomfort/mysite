@@ -118,9 +118,7 @@ export default class View2 extends React.Component<View2Props, View2States> {
       </div>
       <Tabs>
         <Tab label="JSON">
-          {// 本当は <JsonDiv recipes={jsonResult.recipes} /> のようにコンポーネントとして切り出したいが、なぜかコンパイルエラーになる
-            JsonDiv(jsonResult.recipes)
-          }
+          <JsonDiv recipes={jsonResult.recipes}/>
         </Tab>
         <Tab label="Preview">
           <div>
@@ -131,7 +129,27 @@ export default class View2 extends React.Component<View2Props, View2States> {
     </div>
   }
 }
+interface IRecipes {
+  recipes: Recipe[]
+}
+const JsonDiv: StatelessComponent<IRecipes> = (props) => isNullOrUndefined(props.recipes) || props.recipes.length === 0
+  ? <NotFound/>
+  : <Found recipes={props.recipes}/>;
+const NotFound = () => <div>
+  データが存在しません
+</div>;
+const Found: StatelessComponent<IRecipes> = (props) => <ul>
+  {props.recipes.map(recipe => <li key={recipe.id}>{recipe.key2}</li>)}
+</ul>;
 
-const JsonDiv = (recipes: Recipe[]) => { return isNullOrUndefined(recipes) || recipes.length === 0 ? notFound() : found(recipes)};
-const notFound = () => <div>データが存在しません</div>;
-const found = (recipes: Recipe[]) => recipes.map(recipe => <div key={recipe.id}>{recipe.key2}</div>);
+
+// 先頭が大文字で、引数が1つで、型を指定しないと関数コンポーネント扱いぽい。なお、以下のように、引き数名は props に限らない
+//const TestComponent = (propsaa) => <div>ステートレスコンポーネント？{propsaa.name}</div>;
+// TypeScript では型指定が必要になるが、単純に型指定するとコンパイルが通らない
+//const TestComponent2 = (name: string) => <div>ステートレスコンポーネント２{name}</div>;
+// 以下の書き方で型指定できる。
+// interface ITest {
+//  name: string;
+// }
+//const TestComponent2: StatelessComponent<ITest> = (props) => <div>ステートレスコンポーネント２{props.name}</div>;
+
