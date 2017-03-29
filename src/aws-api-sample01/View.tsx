@@ -6,6 +6,7 @@ import {StatelessComponent} from 'react';
 const isNullOrUndefined = require('is-nil');
 
 interface Recipe {
+  'id': number;
   'key1': string;
   'key2': string;
 }
@@ -46,16 +47,24 @@ export default class View2 extends React.Component<View2Props, View2States> {
     // 実際には WebApi から取得して返す
     const sampleRecipes = [
       {
-        'key1': 'val1',
-        'key2': 'val2'
+        'id': 1,
+        'key1': 'a',
+        'key2': 'a-1'
       },
       {
-        'key1': 'val3',
-        'key2': 'val4'
+        'id': 2,
+        'key1': 'a',
+        'key2': 'a-2'
       },
       {
-        'key1': 'val5',
-        'key2': 'val6'
+        'id': 3,
+        'key1': 'a',
+        'key2': 'a-3'
+      },
+      {
+        'id': 4,
+        'key1': 'b',
+        'key2': 'b-1'
       },
     ];
     return sampleRecipes.filter(val => val.key1 === word);
@@ -123,6 +132,6 @@ export default class View2 extends React.Component<View2Props, View2States> {
   }
 }
 
-const JsonDiv = (recipes: Recipe[]) => { return isNullOrUndefined(recipes) || recipes.length === 0 ? notFound() : found(recipes[0].key2)};
+const JsonDiv = (recipes: Recipe[]) => { return isNullOrUndefined(recipes) || recipes.length === 0 ? notFound() : found(recipes)};
 const notFound = () => <div>データが存在しません</div>;
-const found = (val: string) => <div>{val}</div>;
+const found = (recipes: Recipe[]) => recipes.map(recipe => <div key={recipe.id}>{recipe.key2}</div>);
