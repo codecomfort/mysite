@@ -39,6 +39,8 @@ const initialState: ViewState = {
 export const reducer = (state: ViewState = initialState, action: MyAction): ViewState => {
   switch (action.type) {
     case ActionTypes.UPDATE_INPUT_WORD:
+      // FIXME いちいち自身と関係ない state をセットするのはダルい。
+      // マージするようなメソッドを使って差分だけ更新できないか
       return {
         input: action.input || '',
         jsonResult: state.jsonResult
