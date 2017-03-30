@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
-import {StatelessComponent} from 'react';
 import {InputArea} from './InputArea';
+import {JsonView} from './JsonView';
 const isNullOrUndefined = require('is-nil');
 
-interface Recipe {
+export interface Recipe {
   'id': number;
   'key1': string;
   'key2': string;
@@ -99,7 +99,7 @@ export default class View extends React.Component<ViewProps, ViewStates> {
       />
       <Tabs>
         <Tab label="JSON">
-          <JsonDiv recipes={jsonResult.recipes}/>
+          <JsonView recipes={jsonResult.recipes}/>
         </Tab>
         <Tab label="Preview">
           <div>
@@ -110,17 +110,6 @@ export default class View extends React.Component<ViewProps, ViewStates> {
     </div>
   }
 }
-interface IRecipes {
-  recipes: Recipe[]
-}
-const JsonDiv: StatelessComponent<IRecipes> = (props) => isNullOrUndefined(props.recipes) || props.recipes.length === 0
-  ? <NotFound/>
-  : <Found recipes={props.recipes}/>;
-const NotFound = () => <div>
-  データが存在しません
-</div>;
-const Found: StatelessComponent<IRecipes> = (props) => <ul>
-  {props.recipes.map(recipe => <li key={recipe.id}>{recipe.key2}</li>)}
-</ul>;
+
 
 
