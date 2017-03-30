@@ -36,7 +36,7 @@ const initialState: ViewState = {
   }
 };
 
-export default function reducer(state: ViewState = initialState, action: MyAction): ViewState {
+export const reducer = (state: ViewState = initialState, action: MyAction): ViewState => {
   switch (action.type) {
     case ActionTypes.UPDATE_INPUT_WORD:
       return {
@@ -54,7 +54,7 @@ export default function reducer(state: ViewState = initialState, action: MyActio
     default:
       return state
   }
-}
+};
 
 export class ActionDispatcher {
   private dispatch: (action: any) => any;
@@ -63,19 +63,15 @@ export class ActionDispatcher {
     this.dispatch = dispatch
   }
 
-  public handleOnChange() {
-    // this.dispatch({type: ActionTypes.INCREMENT, amount: amount})
-    // (e: object, newValue: string) => this.setState({input: newValue})
-    return (e: object, newValue: string) => {
+  handleOnChange = () =>
+    (e: object, newValue: string) =>
       this.dispatch({
         type: ActionTypes.UPDATE_INPUT_WORD,
         input: newValue
       });
-    }
-  }
 
-  public handleTouchTap(input: string) {
-    return (e: object) => {
+  handleTouchTap = (input: string) =>
+    (e: object) => {
       if (isNullOrUndefined(input) || input === '') {
         alert('検索語を入れてください');
         return;
@@ -100,37 +96,34 @@ export class ActionDispatcher {
           recipes: recipes
         }
       });
-    }
-  }
+    };
 
-  private getRecipes(word: string): Recipe[] {
+  private getRecipes = (word: string): Recipe[] =>
+    this.sampleRecipes.filter(val => val.key1 === word);
 
-    // 実際には WebApi から取得して返す
-    const sampleRecipes = [
-      {
-        'id': 1,
-        'key1': 'a',
-        'key2': 'a-1'
-      },
-      {
-        'id': 2,
-        'key1': 'a',
-        'key2': 'a-2'
-      },
-      {
-        'id': 3,
-        'key1': 'a',
-        'key2': 'a-3'
-      },
-      {
-        'id': 4,
-        'key1': 'b',
-        'key2': 'b-1'
-      },
-    ];
-    return sampleRecipes.filter(val => val.key1 === word);
-  }
+  private sampleRecipes = [
+    {
+      'id': 1,
+      'key1': 'a',
+      'key2': 'a-1'
+    },
+    {
+      'id': 2,
+      'key1': 'a',
+      'key2': 'a-2'
+    },
+    {
+      'id': 3,
+      'key1': 'a',
+      'key2': 'a-3'
+    },
+    {
+      'id': 4,
+      'key1': 'b',
+      'key2': 'b-1'
+    },
+  ];
 }
 
-
+export default reducer;
 
