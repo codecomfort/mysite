@@ -1,8 +1,7 @@
 import * as React from 'react';
-import TextField from 'material-ui/TextField';
-import IconButton from 'material-ui/IconButton';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import {StatelessComponent} from 'react';
+import {InputArea} from './InputArea';
 const isNullOrUndefined = require('is-nil');
 
 interface Recipe {
@@ -22,14 +21,6 @@ interface ViewStates {
   }
 }
 
-const styles = {
-  textFieldStyles: {
-    fontSize: 20
-  },
-  iconStyles: {
-    fontSize: '36px'
-  }
-};
 export default class View extends React.Component<ViewProps, ViewStates> {
   constructor() {
     super();
@@ -102,20 +93,10 @@ export default class View extends React.Component<ViewProps, ViewStates> {
 
     return <div>
       <h2>AWS サンプル01</h2>
-      <div>
-        <TextField
-          style={styles.textFieldStyles}
-          hintText="レシピ名"
-          onChange={ (e: object, newValue: string) => this.setState({input: newValue})}
-        />
-        <IconButton
-          onTouchTap={ this.handleTouchTap }>
-          <i className="material-icons"
-             style={styles.iconStyles}>
-            search
-          </i>
-        </IconButton>
-      </div>
+      <InputArea
+        onChange={ (e: object, newValue: string) => this.setState({input: newValue}) }
+        onTouchTap={ this.handleTouchTap }
+      />
       <Tabs>
         <Tab label="JSON">
           <JsonDiv recipes={jsonResult.recipes}/>
@@ -142,14 +123,4 @@ const Found: StatelessComponent<IRecipes> = (props) => <ul>
   {props.recipes.map(recipe => <li key={recipe.id}>{recipe.key2}</li>)}
 </ul>;
 
-
-// 先頭が大文字で、引数が1つで、型を指定しないと関数コンポーネント扱いぽい。なお、以下のように、引き数名は props に限らない
-//const TestComponent = (propsaa) => <div>ステートレスコンポーネント？{propsaa.name}</div>;
-// TypeScript では型指定が必要になるが、単純に型指定するとコンパイルが通らない
-//const TestComponent2 = (name: string) => <div>ステートレスコンポーネント２{name}</div>;
-// 以下の書き方で型指定できる。
-// interface ITest {
-//  name: string;
-// }
-//const TestComponent2: StatelessComponent<ITest> = (props) => <div>ステートレスコンポーネント２{props.name}</div>;
 
