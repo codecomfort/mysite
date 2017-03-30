@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {StatelessComponent} from 'react';
 import {isNullOrUndefined} from 'util';
-import {Recipe} from './View';
+import {Recipe} from './module';
 
 interface IRecipes {
   recipes: Recipe[]

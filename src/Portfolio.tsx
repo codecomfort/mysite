@@ -5,7 +5,7 @@ import TicTacToe from './react-tutorial-tictactoe/TicTacToe';
 import Paper from 'material-ui/Paper';
 import MuiMenu from 'material-ui/Menu';
 import MuiMenuItem from 'material-ui/MenuItem';
-import AwsSample01 from './aws-api-sample01/View';
+import AwsSample01 from './aws-api-sample01/Root';
 
 const styles = {
   paperStyle: {
