@@ -11,10 +11,10 @@ interface Recipe {
   'key2': string;
 }
 
-interface View2Props {
+interface ViewProps {
 }
 
-interface View2States {
+interface ViewStates {
   input: string;
   jsonResult: {
     httpStatus: string;
@@ -30,7 +30,7 @@ const styles = {
     fontSize: '36px'
   }
 };
-export default class View2 extends React.Component<View2Props, View2States> {
+export default class View extends React.Component<ViewProps, ViewStates> {
   constructor() {
     super();
     this.state = {
