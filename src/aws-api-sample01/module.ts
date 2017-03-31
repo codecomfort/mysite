@@ -16,7 +16,7 @@ export interface ViewState {
 }
 
 interface MyAction {
-  type: string;
+  type: ActionTypes;
   input?: string;
   jsonResult?: {
     httpStatus: string;
@@ -67,11 +67,13 @@ export class ActionDispatcher {
   }
 
   handleOnChange = () =>
-    (e: object, newValue: string) =>
-      this.dispatch({
+    (e: object, newValue: string) => {
+      const inputChangedAction: MyAction = {
         type: ActionTypes.UPDATE_INPUT_WORD,
         input: newValue
-      });
+      };
+      this.dispatch(inputChangedAction);
+    };
 
   handleTouchTap = (input: string) =>
     (e: object) => {
@@ -82,23 +84,25 @@ export class ActionDispatcher {
 
       const recipes = this.getRecipes(input);
       if (recipes.length === 0) {
-        this.dispatch({
+        const noDataFoundAction: MyAction = {
           type: ActionTypes.LIST_JSON,
           jsonResult: {
             httpStatus: '200',
             recipes: []
           }
-        });
+        };
+        this.dispatch(noDataFoundAction);
         return;
       }
 
-      this.dispatch({
+      const dataFoundAction: MyAction = {
         type: ActionTypes.LIST_JSON,
         jsonResult: {
           httpStatus: '200',
           recipes: recipes
         }
-      });
+      };
+      this.dispatch(dataFoundAction);
     };
 
   private getRecipes = (word: string): Recipe[] =>
