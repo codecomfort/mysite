@@ -15,13 +15,14 @@ export interface ViewState {
   }
 }
 
+interface JsonResult {
+  httpStatus: string;
+  recipes: Recipe[];
+}
+
 interface MyAction {
   type: ActionTypes;
-  input?: string;
-  jsonResult?: {
-    httpStatus: string;
-    recipes: Recipe[];
-  }
+  data?: string | JsonResult;
 }
 
 export class ActionTypes {
@@ -43,13 +44,13 @@ export const reducer = (state: ViewState = initialState, action: MyAction): View
       // FIXME いちいち自身と関係ない state をセットするのはダルい。
       // マージするようなメソッドを使って差分だけ更新できないか
       return {
-        input: action.input || '',
+        input: <string>action.data || '',
         jsonResult: state.jsonResult
       };
     case ActionTypes.LIST_JSON:
       return {
         input: state.input,
-        jsonResult: action.jsonResult || {
+        jsonResult: <JsonResult>action.data || {
           httpStatus: '',
           recipes: []
         }
@@ -70,7 +71,7 @@ export class ActionDispatcher {
     (e: object, newValue: string) => {
       const inputChangedAction: MyAction = {
         type: ActionTypes.UPDATE_INPUT_WORD,
-        input: newValue
+        data: newValue
       };
       this.dispatch(inputChangedAction);
     };
@@ -86,7 +87,7 @@ export class ActionDispatcher {
       if (recipes.length === 0) {
         const noDataFoundAction: MyAction = {
           type: ActionTypes.LIST_JSON,
-          jsonResult: {
+          data: {
             httpStatus: '200',
             recipes: []
           }
@@ -97,7 +98,7 @@ export class ActionDispatcher {
 
       const dataFoundAction: MyAction = {
         type: ActionTypes.LIST_JSON,
-        jsonResult: {
+        data: {
           httpStatus: '200',
           recipes: recipes
         }
