@@ -4,7 +4,20 @@ import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
 import {ActionDispatcher} from './module';
 
-export default connect(
-  (store: any) => ({value: store.awsApiSample01}),
-  (dispatch: Dispatch<any>) => ({actions: new ActionDispatcher(dispatch)})
-)(View);
+
+// state を受け取ったら、必要な部分を取り出して View へ props 経由で渡す
+const mapStateToProps =
+  (state: any) => ({value: state.awsApiSample01});
+
+// dispatch はアクション(アクション名や付加情報のオブジェクト)を受け取り Reducer をキックする関数
+// ActionDispatcher ではこれを利用して Redux に更新をかける
+// これも View へ props 経由で渡す
+const mapDispatchToProps =
+  (dispatch: Dispatch<any>) => ({actions: new ActionDispatcher(dispatch)});
+export default connect(mapStateToProps, mapDispatchToProps)(View);
+
+// 参考
+// interface ViewProps {
+//  value: ViewState;
+//  actions: ActionDispatcher;
+// }

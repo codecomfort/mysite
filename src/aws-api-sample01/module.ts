@@ -1,3 +1,4 @@
+import {Dispatch} from 'redux';
 const isNullOrUndefined = require('is-nil');
 
 export interface Recipe {
@@ -59,9 +60,9 @@ export const reducer = (state: ViewState = initialState, action: MyAction): View
 };
 
 export class ActionDispatcher {
-  private dispatch: (action: any) => any;
+  private dispatch: Dispatch<any>;
 
-  constructor(dispatch: (action: any) => any) {
+  constructor(dispatch: Dispatch<any>) {
     this.dispatch = dispatch
   }
 
