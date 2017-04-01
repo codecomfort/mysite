@@ -4,6 +4,7 @@ import {InputArea} from './InputArea';
 import {JsonView} from './JsonView';
 import {ViewState, ActionDispatcher} from './module';
 import {StatelessComponent} from 'react';
+import {RegisterArea} from './RegisterArea';
 
 interface ViewProps {
   value: ViewState;
@@ -14,6 +15,12 @@ interface ViewProps {
 // 動作も ActionDispatcher で差し込む
 export const View: StatelessComponent<ViewProps> = (props) => <div>
   <h2>AWS サンプル01</h2>
+  <RegisterArea
+    onChange={ props.actions.handleOnChangeForRegister() }
+    onTouchTap={ props.actions.handleTouchTapForRegister(props.value.inputForRegister) }
+    input={ props.value.inputForRegister }
+  />
+  <hr />
   <InputArea
     onChange={ props.actions.handleOnChange() }
     onTouchTap={ props.actions.handleTouchTap(props.value.input) }
