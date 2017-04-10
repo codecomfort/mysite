@@ -1,35 +1,30 @@
+import AppBar from 'material-ui/AppBar';
+import {List, ListItem} from 'material-ui/List';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import * as React from 'react';
+import {Col, Container, Row} from 'react-grid-system';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './App.css';
 import Home from './Home';
 import Portfolio from './Portfolio';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
-import {List, ListItem} from 'material-ui/List';
+
 const logo = require('./logo.svg');
-const styles = {
-  flexContainer: {
-    display: 'flex',
-    flexDirection: 'row', // 横並びにする
-  },
-  linkInMenu: { // トップメニュー内のリンクのスタイル
-    textDecoration: 'none'  // 下線を消す
-  }
-};
 
 const App = () => (
   <MuiThemeProvider>
     <Router>
       <div className="App">
         <AppBar
+          className="App-bar"
           title="CodeComfort"
+          showMenuIconButton={false}
         >
-          <List style={styles.flexContainer}>
+          <List className="Menu-list">
             <ListItem>
-              <Link to="/" style={styles.linkInMenu}>Home</Link>
+              <Link to="/" className="Link-menu">Home</Link>
             </ListItem>
             <ListItem>
-              <Link to="/portfolio" style={styles.linkInMenu}>Portfolio</Link>
+              <Link to="/portfolio" className="Link-menu">Portfolio</Link>
             </ListItem>
             <ListItem primaryText="About"/>
           </List>

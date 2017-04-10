@@ -1,5 +1,12 @@
+/*
+  CSS の基本的なことができるようになったり、これに時間を割けるようになったら glamor(CSS in JS) で置き換え
+*/
 .App {
   text-align: center;
+}
+
+.App-bar {
+  text-align: left;
 }
 
 .App-logo {
@@ -16,6 +23,15 @@
 
 .App-intro {
   font-size: large;
+}
+
+.Menu-list {
+  display: flex;
+  flexDirection: row; /* 横並びにする */
+}
+
+.Link-menu {
+  text-decoration: none;  /* 下線を消す */
 }
 
 @keyframes App-logo-spin {
