@@ -1,0 +1,29 @@
+.Home-eyecatch {
+  background-color: #ffcc80;
+  height: 150px;
+  padding: 70px;
+  color: white;
+  text-align: center;
+}
+
+.Home-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.Paper-container {
+  text-align: center;
+}
+
+.Paper-style {
+  height: 300px;
+  width: 200px;
+  margin: 10px !important;
+  text-align: center !important;
+  display: inline-block !important;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
