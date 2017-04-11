@@ -1,6 +1,7 @@
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import {List, ListItem} from 'material-ui/List';
+import {Menu, MenuItem} from 'material-ui/Menu';
 import IconButton from 'material-ui/IconButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import * as React from 'react';
@@ -39,21 +40,21 @@ export default class App extends React.Component<{}, IAppState> {
                   drawerOpened: isOpened,
                 })}>
               <div className="Menu-title">CodeComfort</div>
-              <List className="Menu-list">
-                <ListItem><Link to="/" className="Link-menu">Home</Link></ListItem>
-                <ListItem
+              <Menu className="Menu-list">
+                <MenuItem primaryText="Home"><Link to="/" className="Link-menu"/></MenuItem>
+                <MenuItem
                   primaryText="Portfolio"
                   primaryTogglesNestedList={true}
                   initiallyOpen={true}
                   nestedItems={[
-                    <ListItem><Link to="/portfolio/counter">Counter</Link></ListItem>,
-                    <ListItem><Link to="/portfolio/react-tutorial-tictactoe">React Tutorial Tic Tac
-                      Toe</Link></ListItem>,
-                    <ListItem><Link to="/portfolio/aws-api-sample01">AWS ApiGateway Lambda Sample</Link></ListItem>
-                  ]}
-                />
-                <ListItem primaryText="About"/>
-              </List>
+                    <MenuItem key={0}><Link to="/portfolio/counter">Counter</Link></MenuItem>,
+                    <MenuItem key={1}><Link to="/portfolio/react-tutorial-tictactoe">React Tutorial Tic Tac
+                      Toe</Link></MenuItem>,
+                    <MenuItem key={2}><Link to="/portfolio/aws-api-sample01">AWS ApiGateway Lambda Sample</Link></MenuItem>,
+                  ]}>
+                </MenuItem>
+                <MenuItem primaryText="About"></MenuItem>
+              </Menu>
             </Drawer>
             <AppBar
               className="App-bar"
