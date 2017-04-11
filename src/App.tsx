@@ -2,7 +2,6 @@ import AppBar from 'material-ui/AppBar';
 import {List, ListItem} from 'material-ui/List';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import * as React from 'react';
-import {Col, Container, Row} from 'react-grid-system';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './App.css';
 import Home from './Home';

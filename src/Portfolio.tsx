@@ -1,28 +1,19 @@
-import * as React from 'react';
-import {Route, Link} from 'react-router-dom';
-import Counter from './counter/Root';
-import TicTacToe from './react-tutorial-tictactoe/TicTacToe';
-import Paper from 'material-ui/Paper';
 import MuiMenu from 'material-ui/Menu';
 import MuiMenuItem from 'material-ui/MenuItem';
+import Paper from 'material-ui/Paper';
+import * as React from 'react';
+import {Col, Container, Row} from 'react-grid-system';
+import {Link, Route} from 'react-router-dom';
 import AwsSample01 from './aws-api-sample01/Root';
-
-const styles = {
-  paperStyle: {
-    display: 'inline-block',
-    margin: '16px 32px 16px 0',
-    textAlign: 'left', // 文字を左寄せ
-    float: 'left' // メニューを左寄せ
-  },
-  menuStyle: {
-  }
-};
+import Counter from './counter/Root';
+import './Portfolio.css';
+import TicTacToe from './react-tutorial-tictactoe/TicTacToe';
 
 const Portfolio = () => (
   <div>
-    <Paper style={styles.paperStyle}>
+    <Paper className="Paper-style">
       <h2>Portfolio Page</h2>
-      <MuiMenu style={styles.menuStyle}>
+      <MuiMenu >
         <MuiMenuItem>
           <Link to="/portfolio/counter">Counter</Link>
         </MuiMenuItem>
@@ -37,7 +28,6 @@ const Portfolio = () => (
     <Route path="/portfolio/counter" component={ Counter }/>
     <Route path="/portfolio/react-tutorial-tictactoe" component={ TicTacToe }/>
     <Route path="/portfolio/aws-api-sample01" component={ AwsSample01 }/>
-
   </div>
 );
 
