@@ -12,7 +12,6 @@ import Home from './Home';
 import Portfolio from './Portfolio';
 import './css/font-icons.css';
 
-const logo = require('./logo.svg');
 
 interface IAppState {
   drawerDocked: boolean;
@@ -62,7 +61,7 @@ export default class App extends React.Component<{}, IAppState> {
                               onTouchTap={ () =>
                                 this.setState({
                                   drawerDocked: true,
-                                  drawerOpened: false,
+                                  drawerOpened: true,
                                 })}>
                       <Link to="/portfolio/counter">Counter</Link>
                     </MenuItem>,
@@ -70,7 +69,7 @@ export default class App extends React.Component<{}, IAppState> {
                               onTouchTap={ () =>
                                 this.setState({
                                   drawerDocked: true,
-                                  drawerOpened: false,
+                                  drawerOpened: true,
                                 })}>
                       <Link to="/portfolio/react-tutorial-tictactoe">React Tutorial Tic Tac
                         Toe</Link></MenuItem>,
@@ -78,7 +77,7 @@ export default class App extends React.Component<{}, IAppState> {
                               onTouchTap={ () =>
                                 this.setState({
                                   drawerDocked: true,
-                                  drawerOpened: false,
+                                  drawerOpened: true,
                                 })}>
                       <Link to="/portfolio/aws-api-sample01">AWS ApiGateway Lambda
                         Sample</Link></MenuItem>,
@@ -99,10 +98,6 @@ export default class App extends React.Component<{}, IAppState> {
                   drawerOpened: true,
                 })}
             />
-            <div className="App-header">
-              <img src={logo} className="App-logo" alt="logo"/>
-              <h2>Welcome to CodeComfort Web Site!!!</h2>
-            </div>
             <Route exact path="/" component={ Home }/>
             <Route path="/portfolio" component={ Portfolio }/>
           </div>
