@@ -30,6 +30,7 @@ export default class App extends React.Component<{}, IAppState> {
         <Router>
           <div className="App">
             <Drawer
+              tabIndex={0}
               docked={false}
               width={200}
               open={this.state.drawerOpened}
@@ -40,8 +41,18 @@ export default class App extends React.Component<{}, IAppState> {
               <div className="Menu-title">CodeComfort</div>
               <List className="Menu-list">
                 <ListItem><Link to="/" className="Link-menu">Home</Link></ListItem>
-                <ListItem><Link to="/portfolio" className="Link-menu">Portfolio</Link>
-                </ListItem><ListItem primaryText="About"/>
+                <ListItem
+                  primaryText="Portfolio"
+                  primaryTogglesNestedList={true}
+                  initiallyOpen={true}
+                  nestedItems={[
+                    <ListItem><Link to="/portfolio/counter">Counter</Link></ListItem>,
+                    <ListItem><Link to="/portfolio/react-tutorial-tictactoe">React Tutorial Tic Tac
+                      Toe</Link></ListItem>,
+                    <ListItem><Link to="/portfolio/aws-api-sample01">AWS ApiGateway Lambda Sample</Link></ListItem>
+                  ]}
+                />
+                <ListItem primaryText="About"/>
               </List>
             </Drawer>
             <AppBar
