@@ -32,15 +32,17 @@
   font-size: large;
 }
 
+/*
+ FIXME 本家のように FlatButton 全体を押せるようにしたい
+ */
 .Menu-title {
-  cursor: pointer;
+  /*cursor: pointer;*/
   font-size: 24px;
   color: rgb(255, 255, 255);
   background-color: #ffcc80;
   line-height: 64px;
   padding-left: 24px;
   margin-bottom: 8px;
-
 }
 
 .Menu-list {
