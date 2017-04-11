@@ -6,7 +6,15 @@
 }
 
 .App-bar {
-  text-align: left;
+  /*
+    ・色は以下を参考
+        http://www.material-ui.com/#/customization/colors
+     ・Material-UI のデフォルトスタイルを上書きするには !important つける必要あり
+  */
+  background-color: #ffcc80 !important;
+
+  /* FIXME ハンバーガーアイコンの色が見にくいので変えたい
+  */
 }
 
 .App-logo {
