@@ -2,7 +2,6 @@
   CSS の基本的なことができるようになったり、これに時間を割けるようになったら glamor(CSS in JS) で置き換え
 */
 .App {
-  text-align: center;
 }
 
 .App-bar {
@@ -33,9 +32,18 @@
   font-size: large;
 }
 
+.Menu-title {
+  cursor: pointer;
+  font-size: 24px;
+  color: rgb(255, 255, 255);
+  background-color: #ffcc80;
+  line-height: 64px;
+  padding-left: 24px;
+  margin-bottom: 8px;
+
+}
+
 .Menu-list {
-  display: flex;
-  flexDirection: row; /* 横並びにする */
 }
 
 .Link-menu {
