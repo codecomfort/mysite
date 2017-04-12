@@ -1,7 +1,7 @@
 .Home-eyecatch {
   background-color: #ffcc80;
-  height: 150px;
-  padding: 70px;
+  padding: 72px 24px;
+  box-sizing: border-box;
   color: white;
   text-align: center;
 }
@@ -9,6 +9,22 @@
 .Home-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
+}
+
+.Home-purpose {
+  padding: 72px 24px;
+  box-sizing: border-box;
+  background-color: rgb(238, 238, 238);
+}
+
+.Home-purpose p {
+  max-width: 700px;
+  margin: 0 auto 13px;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0;
+  color: rgba(0, 0, 0, 0.870588);
 }
 
 .Paper-container {

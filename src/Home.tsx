@@ -28,8 +28,8 @@ export default class Home extends React.Component<{}, IHomeState> {
           <h1>CodeComfort Web Site</h1>
           <h2>コードで世界を快適に</h2>
         </div>
-        <div>
-          <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+        <div className="Home-purpose">
+          <p>いいコードは、世界を快適にします。いいコードは、開発者も快適にします。いいコードを書こう。</p>
         </div>
         <div className="Paper-container">
           <Paper className="Paper-style" zDepth={this.state.paper1zDepth}
