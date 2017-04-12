@@ -1,4 +1,3 @@
-import * as Im from 'immutable';
 import Paper from 'material-ui/Paper';
 import * as React from 'react';
 import {Link} from 'react-router-dom';
@@ -22,7 +21,6 @@ export default class Home extends React.Component<{}, IHomeState> {
   }
 
   public render() {
-    const current = Im.fromJS(this.state);
     return (
       <div className="Home">
         <div className="Home-eyecatch">
@@ -35,16 +33,16 @@ export default class Home extends React.Component<{}, IHomeState> {
         </div>
         <div className="Paper-container">
           <Paper className="Paper-style" zDepth={this.state.paper1zDepth}
-                 onMouseEnter={ () => this.setState(current.merge({paper1zDepth: 2}).toJS())}
-                 onMouseLeave={ () => this.setState(current.merge({paper1zDepth: 1}).toJS())}
+                 onMouseEnter={ () => this.setState({paper1zDepth: 2})}
+                 onMouseLeave={ () => this.setState({paper1zDepth: 1})}
           >aaa</Paper>
           <Paper className="Paper-style" zDepth={this.state.paper2zDepth}
-                 onMouseEnter={ () => this.setState(current.merge({paper2zDepth: 2}).toJS())}
-                 onMouseLeave={ () => this.setState(current.merge({paper2zDepth: 1}).toJS())}
+                 onMouseEnter={ () => this.setState({paper2zDepth: 2})}
+                 onMouseLeave={ () => this.setState({paper2zDepth: 1})}
           >bbb</Paper>
           <Paper className="Paper-style" zDepth={this.state.paper3zDepth}
-                 onMouseEnter={ () => this.setState(current.merge({paper3zDepth: 2}).toJS())}
-                 onMouseLeave={ () => this.setState(current.merge({paper3zDepth: 1}).toJS())}
+                 onMouseEnter={ () => this.setState({paper3zDepth: 2})}
+                 onMouseLeave={ () => this.setState({paper3zDepth: 1})}
           >ccc</Paper>
         </div>
       </div>
