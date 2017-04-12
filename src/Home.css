@@ -56,6 +56,28 @@
   height: 300px;
 }
 
+.Home-bottom {
+  padding: 72px 24px;
+  box-sizing: border-box;
+  background-color: rgb(238, 238, 238);
+  text-align: center;
+}
+
+.Home-bottom p {
+  max-width: 700px;
+  margin: 0 auto 13px;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0;
+  color: rgba(0, 0, 0, 0.870588);
+}
+
+.Github-button a {
+  /* RaisedButton への色付け */
+  background-color: #ffcc80 !important;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

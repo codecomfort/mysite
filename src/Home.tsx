@@ -1,3 +1,4 @@
+import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
 import * as React from 'react';
 import {Link} from 'react-router-dom';
@@ -50,6 +51,10 @@ export default class Home extends React.Component<{}, IHomeState> {
             <h3 className="Paper-header">その他</h3>
             <div className="Paper-body">画像</div>
           </Paper>
+        </div>
+        <div className="Home-bottom">
+          <p>Want to help make this project awesome? Check out our repo.</p>
+          <RaisedButton className="Github-button" href="https://github.com/codecomfort/">GitHub</RaisedButton>
         </div>
       </div>
     );
