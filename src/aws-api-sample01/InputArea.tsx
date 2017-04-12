@@ -1,13 +1,12 @@
 import * as React from 'react';
 import TextField from 'material-ui/TextField';
 import IconButton from 'material-ui/IconButton';
-import {StatelessComponent} from 'react';
 
 interface IInputArea {
   onChange: (e: object, newValue: string) => void;
   onTouchTap: (e: object) => void;
 }
-export const InputArea: StatelessComponent<IInputArea> = (props) => <div>
+export const InputArea = (props: IInputArea) => <div>
   <TextField
     style={styles.textFieldStyles}
     hintText="レシピ名"

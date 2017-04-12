@@ -3,17 +3,16 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import {InputArea} from './InputArea';
 import {JsonView} from './JsonView';
 import {ViewState, ActionDispatcher} from './module';
-import {StatelessComponent} from 'react';
 import {RegisterArea} from './RegisterArea';
 
-interface ViewProps {
+interface IViewProps {
   value: ViewState;
   actions: ActionDispatcher;
 }
 
 // ステートは Redux 管理とし、ViewState プロパティとして受け取る
 // 動作も ActionDispatcher で差し込む
-export const View: StatelessComponent<ViewProps> = (props) => <div>
+export const View = (props: IViewProps) => <div>
   <h2>AWS サンプル01</h2>
   <RegisterArea
     onChange={ props.actions.handleOnChangeForRegister() }

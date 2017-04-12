@@ -1,14 +1,13 @@
 import * as React from 'react';
 import TextField from 'material-ui/TextField';
 import IconButton from 'material-ui/IconButton';
-import {StatelessComponent} from 'react';
 
 interface IRegisterArea {
   onChange: (e: object, newValue: string) => void;
   onTouchTap: (e: object) => void;
   input: string;
 }
-export const RegisterArea: StatelessComponent<IRegisterArea> = (props) => <div>
+export const RegisterArea = (props: IRegisterArea) => <div>
   <TextField
     style={styles.textFieldStyles}
     hintText="登録レシピ名"
