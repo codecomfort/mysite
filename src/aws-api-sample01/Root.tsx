@@ -1,3 +1,4 @@
+import * as Im from 'immutable';
 import * as React from 'react';
 import View from './View';
 import {connect} from 'react-redux';
@@ -6,7 +7,7 @@ import {ActionDispatcher} from './module';
 
 // state を受け取ったら、必要な部分を取り出して View へ props 経由で渡す
 const mapStateToProps =
-  (state: any) => ({value: state.awsApiSample01});
+  (state: Im.Map<string, any>) => ({value: state.get('awsApiSample01')});
 
 // dispatch はアクション(アクション名や付加情報のオブジェクト)を受け取り Reducer をキックする関数
 // ActionDispatcher ではこれを利用して Redux に更新をかける

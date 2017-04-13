@@ -61,7 +61,8 @@
     "react-grid-system": "^2.7.0",
     "react-redux": "^5.0.4",
     "react-router-dom": "^4.0.0",
-    "react-tap-event-plugin": "^2.0.1"
+    "react-tap-event-plugin": "^2.0.1",
+    "redux-immutable": "^4.0.0"
   },
   "scripts": {
     "start": "node scripts/start.js",

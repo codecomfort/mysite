@@ -1,3 +1,4 @@
+import * as Im from 'immutable';
 import * as React from 'react';
 import {Counter} from './Counter';
 import {connect} from 'react-redux';
@@ -10,6 +11,6 @@ import {ActionDispatcher} from './module';
 // 宣言することなく使用できる
 // さらに、store.counter の counter は、Store.ts 内で宣言されている
 export default connect(
-  (store: any) => ({value: store.counter}),
-  (dispatch: Dispatch<any>) => ({actions: new ActionDispatcher(dispatch)})
+  (store: Im.Map<string, any>) => ({value: store.get('counter')}),
+  (dispatch: Dispatch<any>) => ({actions: new ActionDispatcher(dispatch)}),
 )(Counter);
