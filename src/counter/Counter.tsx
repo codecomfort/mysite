@@ -1,15 +1,15 @@
-import * as React from 'react';
-import {CounterState, ActionDispatcher} from './module';
 import RaisedButton from 'material-ui/RaisedButton';
+import * as React from 'react';
+import { ActionDispatcher, ICounterState} from './module';
 
-interface Props {
-  value: CounterState;
+interface IProps {
+  value: ICounterState;
   actions: ActionDispatcher;
 }
 
 // Root.tsx に Redux を切り出してあるので、Redux に依存しない実装ができる
-export class Counter extends React.Component<Props, {}> {
-  render() {
+export class Counter extends React.Component<IProps, {}> {
+  public render() {
     return <div>
       <div>
         <h2>Counter サンプル</h2>
@@ -21,7 +21,7 @@ export class Counter extends React.Component<Props, {}> {
       <div>
         <a href="http://qiita.com/uryyyyyyy/items/3ad88cf9ca9393335f8c">参考：React + Redux + TypeScriptの最小構成 - Qiita</a>
       </div>
-    </div>
+    </div>;
   }
 }
 

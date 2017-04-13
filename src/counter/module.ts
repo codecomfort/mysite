@@ -1,22 +1,22 @@
 // Ducks ファイル構成に倣い、Reducer や ActionDispatcher を単一ファイルにまとめておく
 
-export interface CounterState {
+export interface ICounterState {
   num: number;
 }
 
-interface MyAction {
+interface IAction {
   type: string;
   amount?: number;
 }
 
 export class ActionTypes {
-  static INCREMENT = 'counter/increment';
-  static DECREMENT = 'counter/decrement';
+  public static INCREMENT = 'counter/increment';
+  public static DECREMENT = 'counter/decrement';
 }
 
-const initialState: CounterState = {num: 0};
+const initialState: ICounterState = {num: 0};
 
-export default function reducer(state: CounterState = initialState, action: MyAction): CounterState {
+export default function reducer(state: ICounterState = initialState, action: IAction): ICounterState {
   switch (action.type) {
     case ActionTypes.INCREMENT:
       return {num: state.num + action.amount};
@@ -27,21 +27,19 @@ export default function reducer(state: CounterState = initialState, action: MyAc
   }
 }
 
-//ActionDispatcher
+// ActionDispatcher
 export class ActionDispatcher {
   private dispatch: (action: any) => any;
 
   constructor(dispatch: (action: any) => any) {
-    this.dispatch = dispatch
+    this.dispatch = dispatch;
   }
 
   public increment(amount: number) {
-    this.dispatch({type: ActionTypes.INCREMENT, amount: amount})
+    this.dispatch({ type: ActionTypes.INCREMENT, amount: amount});
   }
 
   public decrement(amount: number) {
-    this.dispatch({type: ActionTypes.DECREMENT, amount: amount})
+    this.dispatch({ type: ActionTypes.DECREMENT, amount: amount});
   }
 }
-
-
