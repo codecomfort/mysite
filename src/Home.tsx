@@ -3,6 +3,7 @@ import Paper from 'material-ui/Paper';
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 import './Home.css';
+import HomeFooter from './HomeFooter';
 
 const logo = require('./logo.svg');
 interface IHomeState {
@@ -53,9 +54,10 @@ export default class Home extends React.Component<{}, IHomeState> {
           </Paper>
         </div>
         <div className="Home-bottom">
-          <p>Want to help make this project awesome? Check out our repo.</p>
+          <p>本サイトの作成には React, Redux, TypeScript, Material-UI が使用されています</p>
           <RaisedButton className="Github-button" href="https://github.com/codecomfort/">GitHub</RaisedButton>
         </div>
+        <HomeFooter />
       </div>
     );
   }
