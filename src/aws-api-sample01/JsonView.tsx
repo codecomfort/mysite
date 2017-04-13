@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {isNullOrUndefined} from 'util';
-import {Recipe} from './module';
+import {IRecipe} from './module';
 
 interface IRecipes {
-  recipes: Recipe[];
+  recipes: IRecipe[];
 }
 export const JsonView = (props: IRecipes) => isNullOrUndefined(props.recipes) || props.recipes.length === 0
   ? <NotFound/>

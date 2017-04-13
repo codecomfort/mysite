@@ -2,101 +2,125 @@ import {Dispatch} from 'redux';
 const isNullOrUndefined = require('is-nil');
 import axios from 'axios';
 
-export interface Recipe {
+export interface IRecipe {
   'id': number;
   'key1': string;
   'key2': string;
 }
 
-export interface ViewState {
+export interface IViewState {
   input: string;
   inputForRegister: string;
   jsonResult: {
     httpStatus: string;
-    recipes: Recipe[];
+    recipes: IRecipe[];
   }
 }
 
-interface JsonResult {
+interface IJsonResult {
   httpStatus: string;
-  recipes: Recipe[];
+  recipes: IRecipe[];
 }
 
-interface MyAction {
+interface IAction {
   type: ActionTypes;
-  data?: string | JsonResult;
+  data?: string | IJsonResult;
 }
 
 export class ActionTypes {
-  static UPDATE_INPUT_WORD = 'awsapisample01/update_input_word';
-  static UPDATE_INPUT_WORD_FOR_REGISTER = 'awsapisample01/update_input_word_for_register';
-  static LIST_JSON = 'awsapisample01/list_json';
+  public static UPDATE_INPUT_WORD = 'awsapisample01/update_input_word';
+  public static UPDATE_INPUT_WORD_FOR_REGISTER = 'awsapisample01/update_input_word_for_register';
+  public static LIST_JSON = 'awsapisample01/list_json';
 }
 
-const initialState: ViewState = {
+const initialState: IViewState = {
   input: '',
   inputForRegister: '',
   jsonResult: {
     httpStatus: '',
-    recipes: []
-  }
+    recipes: [],
+  },
 };
 
-export const reducer = (state: ViewState = initialState, action: MyAction): ViewState => {
+export const reducer = (state: IViewState = initialState, action: IAction): IViewState => {
   switch (action.type) {
     case ActionTypes.UPDATE_INPUT_WORD:
       // FIXME いちいち自身と関係ない state をセットするのはダルい。
       // マージするようなメソッドを使って差分だけ更新できないか
       return {
-        input: <string>action.data || '',
+        input: action.data as string || '',
         inputForRegister: state.inputForRegister,
-        jsonResult: state.jsonResult
+        jsonResult: state.jsonResult,
       };
     case ActionTypes.UPDATE_INPUT_WORD_FOR_REGISTER:
       return {
         input: state.input,
-        inputForRegister: <string>action.data || '',
-        jsonResult: state.jsonResult
+        inputForRegister: action.data as string || '',
+        jsonResult: state.jsonResult,
       };
     case ActionTypes.LIST_JSON:
       return {
         input: state.input,
         inputForRegister: state.inputForRegister,
-        jsonResult: <JsonResult>action.data || {
+        jsonResult: action.data as IJsonResult || {
           httpStatus: '',
-          recipes: []
-        }
+          recipes: [],
+        },
       };
     default:
-      return state
+      return state;
   }
 };
 
 export class ActionDispatcher {
   private dispatch: Dispatch<any>;
 
+  private sampleRecipes = [
+    {
+      'id': 1,
+      'key1': 'a',
+      'key2': 'a-1',
+    },
+    {
+      'id': 2,
+      'key1': 'a',
+      'key2': 'a-2',
+    },
+    {
+      'id': 3,
+      'key1': 'a',
+      'key2': 'a-3',
+    },
+    {
+      'id': 4,
+      'key1': 'b',
+      'key2': 'b-1',
+    },
+  ];
+
   constructor(dispatch: Dispatch<any>) {
-    this.dispatch = dispatch
+    this.dispatch = dispatch;
   }
 
-  handleOnChange = () =>
+  public handleOnChange = () =>
     (e: object, newValue: string) => {
-      const inputChangedAction: MyAction = {
+      const inputChangedAction: IAction = {
+        data: newValue,
         type: ActionTypes.UPDATE_INPUT_WORD,
-        data: newValue
       };
       this.dispatch(inputChangedAction);
-    };
-  handleOnChangeForRegister = () =>
-    (e: object, newValue: string) => {
-      const inputChangedAction: MyAction = {
-        type: ActionTypes.UPDATE_INPUT_WORD_FOR_REGISTER,
-        data: newValue
-      };
-      this.dispatch(inputChangedAction);
-    };
+    }
 
-  handleTouchTap = (input: string) =>
+  public handleOnChangeForRegister = () =>
+    (e: object, newValue: string) => {
+      const inputChangedAction: IAction = {
+        data: newValue,
+        type: ActionTypes.UPDATE_INPUT_WORD_FOR_REGISTER,
+      };
+      this.dispatch(inputChangedAction);
+    }
+
+  public handleTouchTap = (input: string) =>
     (e: object) => {
       if (isNullOrUndefined(input) || input === '') {
         alert('検索語を入れてください');
@@ -105,28 +129,28 @@ export class ActionDispatcher {
 
       const recipes = this.getRecipes(input);
       if (recipes.length === 0) {
-        const noDataFoundAction: MyAction = {
-          type: ActionTypes.LIST_JSON,
+        const noDataFoundAction: IAction = {
           data: {
             httpStatus: '200',
-            recipes: []
-          }
+            recipes: [],
+          },
+          type: ActionTypes.LIST_JSON,
         };
         this.dispatch(noDataFoundAction);
         return;
       }
 
-      const dataFoundAction: MyAction = {
-        type: ActionTypes.LIST_JSON,
+      const dataFoundAction: IAction = {
         data: {
           httpStatus: '200',
-          recipes: recipes
-        }
+          recipes: recipes,
+        },
+        type: ActionTypes.LIST_JSON,
       };
       this.dispatch(dataFoundAction);
-    };
+    }
 
-  handleTouchTapForRegister = (input: string) =>
+  public handleTouchTapForRegister = (input: string) =>
     (e: object) => {
       if (isNullOrUndefined(input) || input === '') {
         alert('登録レシピを入れてください');
@@ -140,55 +164,33 @@ export class ActionDispatcher {
       // http://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/how-to-cors.html#how-to-cors-console
       axios.post('https://qmkthsx5o2.execute-api.ap-northeast-1.amazonaws.com/prod/DynamoDBManager',
         {
-          'operation': 'create',
-          'tableName': 'sampleTable',
-          'payload': {
-            'Item': {
+          operation: 'create',
+          payload: {
+            Item: {
+              'item3': input,
               'key1': 'foo',
               'key2': 'bar',
-              'item3': input
-            }
-          }
+            },
+          },
+          tableName: 'sampleTable',
         }).then((res) => {
-          // 登録に成功したら、登録の入力フィールドを空にする
-            const registerOkAction: MyAction = {
-              type: ActionTypes.UPDATE_INPUT_WORD_FOR_REGISTER,
-              data: ''
-            };
-            this.dispatch(registerOkAction);
-            return;
-        }).catch((err) => {
-          alert('登録できませんでした');
-          console.log(err.message);
-          return;
-       });
+        // 登録に成功したら、登録の入力フィールドを空にする
+        const registerOkAction: IAction = {
+          data: '',
+          type: ActionTypes.UPDATE_INPUT_WORD_FOR_REGISTER,
+        };
+        this.dispatch(registerOkAction);
+        return;
+      }).catch((err) => {
+        alert('登録できませんでした');
+        console.log(err.message);
+        return;
+      });
 
     };
-  private getRecipes = (word: string): Recipe[] =>
-    this.sampleRecipes.filter(val => val.key1 === word);
+  private getRecipes = (word: string): IRecipe[] =>
+    this.sampleRecipes.filter((val) => val.key1 === word)
 
-  private sampleRecipes = [
-    {
-      'id': 1,
-      'key1': 'a',
-      'key2': 'a-1'
-    },
-    {
-      'id': 2,
-      'key1': 'a',
-      'key2': 'a-2'
-    },
-    {
-      'id': 3,
-      'key1': 'a',
-      'key2': 'a-3'
-    },
-    {
-      'id': 4,
-      'key1': 'b',
-      'key2': 'b-1'
-    },
-  ];
 }
 
 export default reducer;

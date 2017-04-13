@@ -2,15 +2,15 @@ import * as React from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import {InputArea} from './InputArea';
 import {JsonView} from './JsonView';
-import {ViewState, ActionDispatcher} from './module';
+import {IViewState, ActionDispatcher} from './module';
 import {RegisterArea} from './RegisterArea';
 
 interface IViewProps {
-  value: ViewState;
+  value: IViewState;
   actions: ActionDispatcher;
 }
 
-// ステートは Redux 管理とし、ViewState プロパティとして受け取る
+// ステートは Redux 管理とし、IViewState プロパティとして受け取る
 // 動作も ActionDispatcher で差し込む
 export const View = (props: IViewProps) => <div>
   <h2>AWS サンプル01</h2>

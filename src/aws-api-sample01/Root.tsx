@@ -18,6 +18,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(View);
 
 // 参考
 // interface ViewProps {
-//  value: ViewState;
+//  value: IViewState;
 //  actions: ActionDispatcher;
 // }
