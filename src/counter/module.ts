@@ -14,6 +14,7 @@ export class ActionTypes {
   public static DECREMENT = 'counter/decrement';
 }
 
+// FIXME ICounterState を Immutable 化できないか？
 const initialState: ICounterState = {num: 0};
 
 export default function reducer(state: ICounterState = initialState, action: IAction): ICounterState {
@@ -36,10 +37,10 @@ export class ActionDispatcher {
   }
 
   public increment(amount: number) {
-    this.dispatch({ type: ActionTypes.INCREMENT, amount: amount});
+    this.dispatch({type: ActionTypes.INCREMENT, amount: amount});
   }
 
   public decrement(amount: number) {
-    this.dispatch({ type: ActionTypes.DECREMENT, amount: amount});
+    this.dispatch({type: ActionTypes.DECREMENT, amount: amount});
   }
 }
