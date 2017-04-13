@@ -1,24 +1,16 @@
 import AppBar from 'material-ui/AppBar';
-import Drawer from 'material-ui/Drawer';
-import FlatButton from 'material-ui/FlatButton';
-import {List, ListItem} from 'material-ui/List';
-import {Menu, MenuItem} from 'material-ui/Menu';
 import IconButton from 'material-ui/IconButton';
+import {List, ListItem} from 'material-ui/List';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import * as React from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './App.css';
-import Home from './Home';
+import Home from './Home/Home';
+import MenuDrawer from './MenuDrawer';
 import Portfolio from './Portfolio';
 import './css/font-icons.css';
 
-
-interface IAppState {
-  drawerDocked: boolean;
-  drawerOpened: boolean;
-}
-
-export default class App extends React.Component<{}, IAppState> {
+export default class App extends React.Component<{}, any> {
   constructor() {
     super();
     this.state = {
@@ -32,72 +24,17 @@ export default class App extends React.Component<{}, IAppState> {
       <MuiThemeProvider>
         <Router>
           <div className="App">
-            <Drawer
-              tabIndex={0}
-              docked={this.state.drawerDocked}
-              width={300}
-              open={this.state.drawerOpened}
-              onRequestChange={ (isOpened) =>
-                this.setState({
-                  drawerOpened: isOpened,
-                })}>
-              <div className="Menu-title">
-                <FlatButton
-                  onTouchTap={ () =>
-                    this.setState({
-                      drawerDocked: false,
-                      drawerOpened: false,
-                    })}>
-                  <Link to="/" className="Link-menu">CodeComfort</Link>
-                </FlatButton>
-              </div>
-              <Menu className="Menu-list">
-                <MenuItem
-                  primaryText="Portfolio"
-                  primaryTogglesNestedList={true}
-                  initiallyOpen={true}
-                  nestedItems={[
-                    <MenuItem key={0}
-                              onTouchTap={ () =>
-                                this.setState({
-                                  drawerDocked: true,
-                                  drawerOpened: true,
-                                })}>
-                      <Link to="/portfolio/counter">Counter</Link>
-                    </MenuItem>,
-                    <MenuItem key={1}
-                              onTouchTap={ () =>
-                                this.setState({
-                                  drawerDocked: true,
-                                  drawerOpened: true,
-                                })}>
-                      <Link to="/portfolio/react-tutorial-tictactoe">React Tutorial Tic Tac
-                        Toe</Link></MenuItem>,
-                    <MenuItem key={2}
-                              onTouchTap={ () =>
-                                this.setState({
-                                  drawerDocked: true,
-                                  drawerOpened: true,
-                                })}>
-                      <Link to="/portfolio/aws-api-sample01">AWS ApiGateway Lambda
-                        Sample</Link></MenuItem>,
-                  ]}>
-                </MenuItem>
-                <MenuItem primaryText="About"></MenuItem>
-              </Menu>
-            </Drawer>
+            <MenuDrawer
+              drawerDocked={this.state.drawerDocked}
+              drawerOpened={this.state.drawerOpened}
+              onDrawerChanged={ this.updateDrawerState }/>
             <AppBar
               className="App-bar"
               iconElementRight={
                 <IconButton iconClassName="muidocs-icon-custom-github"
                             href="https://github.com/codecomfort/"
                             target="_blank"/> }
-              onLeftIconButtonTouchTap={ () =>
-                this.setState({
-                  drawerDocked: false,
-                  drawerOpened: true,
-                })}
-            />
+              onLeftIconButtonTouchTap={ () => this.updateDrawerState(false, true) }/>
             <Route exact path="/" component={ Home }/>
             <Route path="/portfolio" component={ Portfolio }/>
           </div>
@@ -105,5 +42,12 @@ export default class App extends React.Component<{}, IAppState> {
       </MuiThemeProvider>
     );
   }
+
+  private updateDrawerState =
+    (isDocked, isOpened) =>
+      this.setState({
+        drawerDocked: isDocked,
+        drawerOpened: isOpened,
+      })
 }
 
