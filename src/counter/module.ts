@@ -14,10 +14,7 @@ export class ActionTypes {
   public static DECREMENT = 'counter/decrement';
 }
 
-// FIXME ICounterState を Immutable 化できないか？
-const initialState: ICounterState = {num: 0};
-
-export default function reducer(state: ICounterState = initialState, action: IAction): ICounterState {
+export default function reducer(state: ICounterState, action: IAction): ICounterState {
   switch (action.type) {
     case ActionTypes.INCREMENT:
       return {num: state.num + action.amount};

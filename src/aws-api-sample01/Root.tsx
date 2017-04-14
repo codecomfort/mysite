@@ -7,7 +7,8 @@ import View from './View';
 
 // state を受け取ったら、必要な部分を取り出して View へ props 経由で渡す
 const mapStateToProps =
-  (state: Im.Map<string, any>) => ({value: state.get('awsApiSample01')});
+  // FIXME initialState を Immutable.Record にしたが、state への型宣言はどうすればいい？
+  (state) => ({value: state.awsApiSample01});
 
 // dispatch はアクション(アクション名や付加情報のオブジェクト)を受け取り Reducer をキックする関数
 // ActionDispatcher ではこれを利用して Redux に更新をかける

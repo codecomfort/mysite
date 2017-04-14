@@ -11,6 +11,7 @@ import {ActionDispatcher} from './module';
 // 宣言することなく使用できる
 // さらに、store.counter の counter は、Store.ts 内で宣言されている
 export default connect(
-  (store: Im.Map<string, any>) => ({value: store.get('counter')}),
+  // FIXME initialState を Immutable.Record にしたが、state への型宣言はどうすればいい？
+  (state) => ({value: state.counter}),
   (dispatch: Dispatch<any>) => ({actions: new ActionDispatcher(dispatch)}),
 )(Counter);

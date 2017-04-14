@@ -15,7 +15,7 @@ export interface IViewState {
   jsonResult: {
     httpStatus: string;
     recipes: IRecipe[];
-  }
+  },
 }
 
 interface IJsonResult {
@@ -34,16 +34,7 @@ export class ActionTypes {
   public static LIST_JSON = 'awsapisample01/list_json';
 }
 
-const initialState: IViewState = {
-  input: '',
-  inputForRegister: '',
-  jsonResult: {
-    httpStatus: '',
-    recipes: [],
-  },
-};
-
-export const reducer = (state: IViewState = initialState, action: IAction): IViewState => {
+export const reducer = (state: IViewState, action: IAction): IViewState => {
   let current;
   let next;
   switch (action.type) {
