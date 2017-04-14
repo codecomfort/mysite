@@ -17,7 +17,7 @@ const mapDispatchToProps =
 export default connect(mapStateToProps, mapDispatchToProps)(View);
 
 // 参考
-// interface ViewProps {
+// interface IViewProps {
 //  value: IViewState;
 //  actions: ActionDispatcher;
 // }

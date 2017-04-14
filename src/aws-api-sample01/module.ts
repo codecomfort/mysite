@@ -1,3 +1,4 @@
+import * as Im from 'immutable';
 import {Dispatch} from 'redux';
 const isNullOrUndefined = require('is-nil');
 import axios from 'axios';
@@ -43,30 +44,30 @@ const initialState: IViewState = {
 };
 
 export const reducer = (state: IViewState = initialState, action: IAction): IViewState => {
+  let current;
+  let next;
   switch (action.type) {
     case ActionTypes.UPDATE_INPUT_WORD:
-      // FIXME いちいち自身と関係ない state をセットするのはダルい。
-      // マージするようなメソッドを使って差分だけ更新できないか
-      return {
+      current = Im.fromJS(state);
+      next = current.merge({
         input: action.data as string || '',
-        inputForRegister: state.inputForRegister,
-        jsonResult: state.jsonResult,
-      };
+      });
+      return next.toJS();
     case ActionTypes.UPDATE_INPUT_WORD_FOR_REGISTER:
-      return {
-        input: state.input,
+      current = Im.fromJS(state);
+      next = current.merge({
         inputForRegister: action.data as string || '',
-        jsonResult: state.jsonResult,
-      };
+      });
+      return next.toJS();
     case ActionTypes.LIST_JSON:
-      return {
-        input: state.input,
-        inputForRegister: state.inputForRegister,
+      current = Im.fromJS(state);
+      next = current.merge({
         jsonResult: action.data as IJsonResult || {
           httpStatus: '',
           recipes: [],
         },
-      };
+      });
+      return next.toJS();
     default:
       return state;
   }
