@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Link} from 'react-router-dom';
 import Board from './Board';
 import './TicTacToe.css';
+import PortfolioPageOutline from '../PortfolioPageOutline';
 
 export class Game extends React.Component<any, any> {
   constructor() {
@@ -66,8 +67,14 @@ export class Game extends React.Component<any, any> {
     });
 
     return (
-      <div>
-        <h2>Tic Tac Toe サンプル</h2>
+      <PortfolioPageOutline
+        title="Tic Tac Toe サンプル"
+        link={{
+          href: 'https://facebook.github.io/react/tutorial/tutorial.html',
+          title: '参考：Tutorial: Intoro To React',
+        }}
+        desc="公式チュートリアルを TypeScript で再実装したものです"
+      >
         <div className="game">
           <div>
             <Board
@@ -80,8 +87,7 @@ export class Game extends React.Component<any, any> {
             <ol>{moves}</ol>
           </div>
         </div>
-        <a href="https://facebook.github.io/react/tutorial/tutorial.html" target="_blank">Tutorial: Intoro To React</a>
-      </div>
+      </PortfolioPageOutline>
     );
   }
 }

@@ -8,14 +8,14 @@ import AwsSample01 from './aws-api-sample01/Root';
 import Counter from './counter/Root';
 import './Portfolio.css';
 import TicTacToe from './react-tutorial-tictactoe/TicTacToe';
-import ImmutableFormView from './redux-form-field-validation/View';
+import ImmutableForm from './redux-form-field-validation/ImmutableForm';
 
 const Portfolio = () => (
   <div className="Portfolio-area">
     <Route path="/portfolio/counter" component={ Counter }/>
     <Route path="/portfolio/react-tutorial-tictactoe" component={ TicTacToe }/>
     <Route path="/portfolio/aws-api-sample01" component={ AwsSample01 }/>
-    <Route path="/portfolio/redux-form-immutable" component={ ImmutableFormView }/>
+    <Route path="/portfolio/redux-form-immutable" component={ ImmutableForm }/>
   </div>
 );
 
