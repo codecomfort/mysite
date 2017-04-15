@@ -39,7 +39,7 @@ export const ImmutableForm = (props: IFormProps) => (
     {/* Field の属性のうち、name と component は必須、他は開発者任意 */}
     <Field name="username" type="text" component={ RenderField } label="Username"/>
     <Field name="email" type="email" component={ RenderField } label="Email"/>
-    <p>(メールアドレス形式が不正な場合、送信ボタン押下のタイミングで、ブラウザによる警告も表示される場合があります)</p>
+    <span>(メールアドレス形式が不正な場合、送信ボタン押下のタイミングで、ブラウザによる警告も表示される場合があります)</span>
     <Field name="age" type="number" component={ RenderField } label="Age"/>
     <div>
       <button type="submit" disabled={props.submitting}>送信</button>
