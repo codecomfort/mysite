@@ -47,6 +47,9 @@ const MenuList = (props: { onTouchTap: () => void }) => (
         <MenuItem key={2} {...props}>
           <Link to="/portfolio/aws-api-sample01">AWS ApiGateway Lambda
             Sample</Link></MenuItem>,
+        <MenuItem key={3} {...props}>
+          <Link to="/portfolio/redux-form-field-validation">Redux Form Immutable
+          </Link></MenuItem>,
       ]}>
     </MenuItem>
     <MenuItem primaryText="About"></MenuItem>

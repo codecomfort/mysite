@@ -1,5 +1,6 @@
 import * as Im from 'immutable';
 import {createStore} from 'redux';
+import {reducer as formReducer} from 'redux-form/immutable';
 import {combineReducers} from 'redux-immutable';
 import awsApiSample01Reducer, {IViewState} from './aws-api-sample01/module';
 import counterReducer, {ICounterState} from './counter/module';  // default export に counterReducer と命名
@@ -20,9 +21,11 @@ class InitialState {
     num: 3,
   };
 }
+
 const initialState = Im.Record({
   awsApiSample01: InitialState.awsApiSample01,
   counter: InitialState.counter,
+  form : Im.Map(),
 });
 
 export default createStore(
@@ -30,6 +33,7 @@ export default createStore(
     {
       awsApiSample01: awsApiSample01Reducer,
       counter: counterReducer,
+      form: formReducer,
     },
     initialState,
   ),
