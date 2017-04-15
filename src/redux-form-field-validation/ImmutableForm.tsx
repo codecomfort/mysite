@@ -27,7 +27,7 @@ const RenderField = (props: IFieldProps) => {
 }
 
 interface IFormProps {
-  // props のドキュメントにあるとおり、これらの項目は全て redux-form によりセットされる
+  // props のドキュメントにあるとおり、これらの項目は全て redux-form によりセットされる。
   handleSubmit: () => void;
   pristine: boolean;  // 初期状態
   reset: () => void;
@@ -39,10 +39,11 @@ export const ImmutableForm = (props: IFormProps) => (
     {/* Field の属性のうち、name と component は必須、他は開発者任意 */}
     <Field name="username" type="text" component={ RenderField } label="Username"/>
     <Field name="email" type="email" component={ RenderField } label="Email"/>
+    <p>(メールアドレス形式が不正な場合、送信ボタン押下のタイミングで、ブラウザによる警告も表示される場合があります)</p>
     <Field name="age" type="number" component={ RenderField } label="Age"/>
     <div>
-      <button type="submit" disabled={props.submitting}>Submit</button>
-      <button type="button" disabled={props.pristine || props.submitting} onClick={props.reset}>Clear Values</button>
+      <button type="submit" disabled={props.submitting}>送信</button>
+      <button type="button" disabled={props.pristine || props.submitting} onClick={props.reset}>クリア</button>
     </div>
   </form>
 );
