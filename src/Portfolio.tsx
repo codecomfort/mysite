@@ -8,7 +8,7 @@ import AwsSample01 from './aws-api-sample01/Root';
 import Counter from './counter/Root';
 import './Portfolio.css';
 import TicTacToe from './react-tutorial-tictactoe/TicTacToe';
-import ImmutableForm from './redux-form-field-validation/ImmutableForm';
+import ImmutableForm from './redux-form-immutable/ImmutableForm';
 
 const Portfolio = () => (
   <div className="Portfolio-area">
