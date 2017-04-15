@@ -39,7 +39,7 @@ export const ImmutableForm = (props: IFormProps) => (
   <PortfolioPageOutline
     title="Redux Form Immutable サンプル"
     link={{
-      href: 'http://redux-form.com/6.0.0-alpha.4/examples/immutable/',
+      href: 'http://redux-form.com/6.6.3/examples/immutable/',
       title: '参考：Immutable JS Example - Redux Form',
     }}
     desc="Redux ステートを Immutable にして実装したもの。使用する側には特に関係ありません。"
