@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PortfolioPageOutline from '../PortfolioPageOutline';
+import MaterialUiFormCore from './MaterialUiFormCore';
 
 export const MaterialUiForm = () => (
     <PortfolioPageOutline
@@ -10,7 +11,7 @@ export const MaterialUiForm = () => (
       }}
       desc="UI に Material-UI を使用したフォームです。バリデーションは非同期バリデーションです。"
     >
-      ここに Material-UI のフォーム
+      <MaterialUiFormCore onSubmit={ (values) => alert(values) } />
     </PortfolioPageOutline>
   )
 ;
