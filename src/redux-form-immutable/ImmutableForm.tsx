@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {Field, reduxForm} from 'redux-form/immutable';
 import PortfolioPageOutline from '../PortfolioPageOutline';
 import ImmutableFormCore from './ImmutablFormCore';
 
