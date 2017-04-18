@@ -2,6 +2,7 @@ import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import * as React from 'react';
 import {Field, reduxForm} from 'redux-form/immutable';
+import asyncValidate from './asyncValidate';
 
 // FIXME ホントは型を記述したいが、interface 内での ...custom の書き方が不明
 const renderTextField = ({input, label, meta: {touched, error}, ...custom}) => (
@@ -29,6 +30,10 @@ export const MaterialUiFormCore = (props: IFormProps) => (
       <Field name="lastName" component={ renderTextField } label="姓"/>
     </div>
     <div>
+      <Field name="email" component={ renderTextField } label="email" />
+      <span style={{ display: "block"}}>(foo@foo.com', 'bar@bar.com 以外のアドレスを入力すると非同期で確認し3秒後にエラー表示します)</span>
+    </div>
+    <div>
       <Field name="notes" component={ renderTextField } label="メモ" multiLine={true} rows={2}/>
     </div>
     <div>
@@ -48,5 +53,6 @@ const styles = {
 
 export default reduxForm({
   form: 'materialuiExample',
+  asyncValidate,
 })(MaterialUiFormCore);
 
