@@ -14,7 +14,7 @@ const PortfolioPageOutline = (props: IProps) => (
   <div>
     <div>
       <h2>{props.title}</h2>
-      <p>ポイント：{props.desc}</p>
+      <p>概要：{props.desc}</p>
       <a href={props.link.href} target="_blank">{props.link.title}</a>
     </div>
     <br />

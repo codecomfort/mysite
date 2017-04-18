@@ -7,7 +7,7 @@ export const MaterialUiForm = () => (
       title="Redux Form Material-UI サンプル"
       link={{
         href: 'http://redux-form.com/6.6.3/examples/material-ui/',
-        title: 'Material UI Example',
+        title: '参考：Material UI Example',
       }}
       desc="UI に Material-UI を使用したフォームです。バリデーションは非同期バリデーションです。"
     >

@@ -39,7 +39,7 @@ export const MaterialUiFormCore = (props: IFormProps) => (
     </div>
     <div>
       <Field name="notes" component={ renderTextField } label="メモ" multiLine={true} rows={2}/>
-      <span style={ styles.annotation }>(9文字以下だと警告が出ますがバリデーションと違い修正しなくても送信可能)</span>
+      <span style={ styles.annotation }>(9文字以下だと警告を表示するがバリデーションではないのでそのまま送信可能)</span>
       <span style={ styles.annotation }>(16文字以上だとバリデーションエラーで送信不可)</span>
     </div>
     <div>
