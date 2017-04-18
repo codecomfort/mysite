@@ -4,6 +4,7 @@ import TextField from 'material-ui/TextField';
 import * as React from 'react';
 import {Field, reduxForm} from 'redux-form/immutable';
 import asyncValidate from './asyncValidate';
+import validate from './validate';
 import warn from './warning';
 
 // FIXME ホントは型を記述したいが、interface 内での ...custom の書き方が不明
@@ -39,6 +40,7 @@ export const MaterialUiFormCore = (props: IFormProps) => (
     <div>
       <Field name="notes" component={ renderTextField } label="メモ" multiLine={true} rows={2}/>
       <span style={ styles.annotation }>(10文字以下だと警告が出ますがバリデーションと違い修正しなくても送信可能)</span>
+      <span style={ styles.annotation }>(15文字以上だとバリデーションエラーで送信不可)</span>
     </div>
     <div>
       <FlatButton disabled={ props.pristine || props.submitting } type="submit">送信</FlatButton>
@@ -64,6 +66,7 @@ const styles = {
 export default reduxForm({
   form: 'materialuiExample',
   warn,
+  validate,
   asyncValidate,
 })(MaterialUiFormCore);
 
