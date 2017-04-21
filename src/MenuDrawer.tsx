@@ -52,6 +52,9 @@ const MenuList = (props: { onTouchTap: () => void }) => (
         <MenuItem key={4} {...props}>
           <Link to="/portfolio/redux-form-material-ui">Redux Form Material-UI</Link>
         </MenuItem>,
+        <MenuItem key={5} {...props}>
+          <Link to="/portfolio/search-sample-01">Search Sample 01</Link>
+        </MenuItem>,
       ]}>
     </MenuItem>
     <MenuItem primaryText="About"></MenuItem>

@@ -7,6 +7,7 @@ import './Portfolio.css';
 import TicTacToe from './react-tutorial-tictactoe/TicTacToe';
 import ImmutableForm from './redux-form-immutable/ImmutableForm';
 import MaterialUiForm from './redux-form-material-ui/MaterialUiForm';
+import {SearchSample01} from './search-sample-01/SearchSample01';
 
 const Portfolio = () => (
   <div className="Portfolio-area">
@@ -15,6 +16,7 @@ const Portfolio = () => (
     <Route path="/portfolio/aws-api-sample01" component={ AwsSample01 }/>
     <Route path="/portfolio/redux-form-immutable" component={ ImmutableForm }/>
     <Route path="/portfolio/redux-form-material-ui" component={ MaterialUiForm }/>
+    <Route path="/portfolio/search-sample-01" component={ SearchSample01 }/>
   </div>
 );
 
