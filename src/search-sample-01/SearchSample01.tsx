@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PortfolioPageOutline from '../PortfolioPageOutline';
+import {SearchSample01Core} from './SearchSample01Core';
 
 export const SearchSample01 = () => (
   <PortfolioPageOutline
@@ -10,7 +11,7 @@ export const SearchSample01 = () => (
     }}
     desc="Web Api の検索サンプルです"
     >
-    TODO
+    <SearchSample01Core />
   </PortfolioPageOutline>
 );
 
