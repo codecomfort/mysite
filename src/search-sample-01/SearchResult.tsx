@@ -1,5 +1,6 @@
 import * as Im from 'immutable';
 import {List, ListItem} from 'material-ui/List';
+import Paper from 'material-ui/Paper';
 import * as React from 'react';
 
 interface IContent {
@@ -27,9 +28,11 @@ export const SearchResult = (props: IProps) => {
       {
         contents.map((content) => {
           return (
-            <ListItem>
-              <p>{content.id}</p>
-              <p>{content.desc}</p>
+            <ListItem key={content.id} style={styles.listItem}>
+              <Paper style={styles.paper}>
+                <p>{content.id}</p>
+                <p>{content.desc}</p>
+              </Paper>
             </ListItem>
           );
         })
@@ -37,5 +40,18 @@ export const SearchResult = (props: IProps) => {
     </List>
   );
 };
+
+const styles = {
+  listItem: {
+    width: '75%',
+  },
+  paper: {
+    // display: 'inline-block',
+    height: 800,
+    margin: 0,
+    textAlign: 'center',
+    width: '95%',
+  }
+}
 
 export default SearchResult;
