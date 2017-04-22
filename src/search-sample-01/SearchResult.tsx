@@ -2,23 +2,12 @@ import * as Im from 'immutable';
 import {List, ListItem} from 'material-ui/List';
 import Paper from 'material-ui/Paper';
 import * as React from 'react';
+import {IContent} from './Interfaces';
 
-interface IContent {
-  id: number;
-}
 
-export class Content implements IContent {
-  public id: number;
-  public desc: string;
-
-  constructor(id: number, desc: string) {
-    this.id = id;
-    this.desc = desc;
-  }
-}
 
 interface IProps {
-  contents: Content[];
+  contents: IContent[];
 }
 
 export const SearchResult = (props: IProps) => {

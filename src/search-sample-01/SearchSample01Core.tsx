@@ -2,11 +2,15 @@ import {Paper} from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import * as React from 'react';
-import { Content, SearchResult} from './SearchResult';
+import SearchResult from './SearchResult';
+import {IContent} from './Interfaces';
+
 interface IProps {
+  searchResults: IContent[];
 }
 
 export const SearchSample01Core = (props: IProps) => {
+  const { searchResults } = props;
   return (
     <div>
       <div>
@@ -20,12 +24,6 @@ export const SearchSample01Core = (props: IProps) => {
     </div>
   );
 };
-
-const searchResults = [
-    new Content(1, 'ここに１回目の検索結果'),
-    new Content(2, 'ここに２回目の検索結果'),
-    new Content(3, 'ここに３回目の検索結果'),
-  ];
 
 const styles = {
   raisedButton: {
