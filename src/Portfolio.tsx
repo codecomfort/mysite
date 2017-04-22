@@ -7,7 +7,7 @@ import './Portfolio.css';
 import TicTacToe from './react-tutorial-tictactoe/TicTacToe';
 import ImmutableForm from './redux-form-immutable/ImmutableForm';
 import MaterialUiForm from './redux-form-material-ui/MaterialUiForm';
-import {SearchSample01} from './search-sample-01/SearchSample01';
+import SearchSample01 from './search-sample-01/Root';
 
 const Portfolio = () => (
   <div className="Portfolio-area">

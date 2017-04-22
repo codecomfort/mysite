@@ -1,33 +1,31 @@
 import * as React from 'react';
 import PortfolioPageOutline from '../PortfolioPageOutline';
+import {ISearchSample01State} from './Interfaces';
+import {ActionDispatcher} from './module';
 import {SearchSample01Core} from './SearchSample01Core';
-import {IContent} from './Interfaces';
 
-export const SearchSample01 = () => (
-  <PortfolioPageOutline
-    title="Search Sample 01"
-    link={{
-      href: '',
-      title: '',
-    }}
-    desc="Web Api の検索サンプルです"
-    >
-    <SearchSample01Core searchResults={searchResults} />
-  </PortfolioPageOutline>
-);
-
-export class Content implements IContent {
-  public id: number;
-  public desc: string;
-
-  constructor(id: number, desc: string) {
-    this.id = id;
-    this.desc = desc;
-  }
+interface IProps {
+  value: ISearchSample01State;
+  actions: ActionDispatcher;
 }
-const searchResults = [
-  new Content(1, 'ここに１回目の検索結果'),
-  // new Content(2, 'ここに２回目の検索結果'),
-  // new Content(3, 'ここに３回目の検索結果'),
-];
+
+const SearchSample01 = (props: IProps) => {
+  const {searchResults} = props.value;
+  const {updateState} = props.actions;
+  return (
+    <PortfolioPageOutline
+      title="Search Sample 01"
+      link={{
+        href: '',
+        title: '',
+      }}
+      desc="Web Api の検索サンプルです"
+    >
+      <SearchSample01Core searchResults={searchResults}
+                          onSearch={updateState}
+      />
+    </PortfolioPageOutline>
+  );
+};
+
 export default SearchSample01;

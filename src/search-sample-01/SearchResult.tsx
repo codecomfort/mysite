@@ -1,10 +1,8 @@
 import * as Im from 'immutable';
-import {List, ListItem} from 'material-ui/List';
+import List, {ListItem} from 'material-ui/List';
 import Paper from 'material-ui/Paper';
 import * as React from 'react';
 import {IContent} from './Interfaces';
-
-
 
 interface IProps {
   contents: IContent[];
@@ -14,7 +12,7 @@ export const SearchResult = (props: IProps) => {
   const {contents} = props;
   return (
     <List>
-      {
+      { contents &&
         contents.map((content) => {
           return (
             <ListItem key={content.id} style={styles.listItem}>
@@ -40,7 +38,7 @@ const styles = {
     margin: 0,
     textAlign: 'center',
     width: '95%',
-  }
-}
+  },
+};
 
 export default SearchResult;
