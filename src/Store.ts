@@ -28,7 +28,12 @@ class InitialState {
   };
 }
 
-const initialState = Im.Record({
+// redux-immutable の combineReducers を使うことで、
+// 内部ステートを Immutable なオブジェクトにできる
+// （Redux 謹製の combineReducers だと ステートは
+// プレーンな JS オブジェクトである必要がある）
+// 詳細は redux-immutable のドキュメントを参照のこと
+const getDefaultState = Im.Record({
   awsApiSample01: InitialState.awsApiSample01,
   counter: InitialState.counter,
   form: Im.Map(),
@@ -43,7 +48,7 @@ export default createStore(
       form: formReducer,
       searchSample01: searchSample01Reducer,
     },
-    initialState,
+    getDefaultState,
   ),
   (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__(),
 );
