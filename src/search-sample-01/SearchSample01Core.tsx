@@ -3,18 +3,20 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import * as React from 'react';
 import SearchResult from './SearchResult';
-import {Content, IContent} from './Interfaces';
+import {Content, IContent, ISearchSpec} from './Interfaces';
 
 interface IProps {
-  searchResults: IContent[];
-  onSearch: (data: IContent) => void;
+  searchResults?: IContent[];
+  onSearch: (data: ISearchSpec) => void;
 }
 
 export const SearchSample01Core = (props: IProps) => {
   const {searchResults, onSearch} = props;
   const handleTouchTap = (data: IContent) => {
-    // TODO とりあえずダミーを返しておく
-    onSearch(new Content(searchResults.length, '???'));
+    const searchSpec: ISearchSpec = {
+       word: 'カレー',
+    };
+    onSearch(searchSpec);
   };
   return (
     <div>

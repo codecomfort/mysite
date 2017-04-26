@@ -5,7 +5,7 @@ import * as React from 'react';
 import {IContent} from './Interfaces';
 
 interface IProps {
-  contents: IContent[];
+  contents?: IContent[];
 }
 
 export const SearchResult = (props: IProps) => {

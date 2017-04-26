@@ -4,16 +4,16 @@ export interface IContent {
 }
 
 export interface ISearchSample01State {
-  searchResults: IContent[];
+  searchResults?: IContent[];
 }
 
 export class ActionTypes {
-  public static UPDATE_STATE = 'searchsample01/update_state';
+  public static SEARCH = 'searchsample01/search';
 }
 
 export interface IAction {
   type: ActionTypes;
-  payload: IContent;
+  payload: ISearchSpec;
 }
 
 export class Content implements IContent {
@@ -24,4 +24,9 @@ export class Content implements IContent {
     this.id = id;
     this.desc = desc;
   }
+}
+
+export interface ISearchSpec {
+  word: string;
+  // いろいろ検索条件を定義する予定
 }

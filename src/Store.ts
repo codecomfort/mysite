@@ -4,7 +4,7 @@ import {reducer as formReducer} from 'redux-form/immutable';
 import {combineReducers} from 'redux-immutable';
 import awsApiSample01Reducer, {IViewState} from './aws-api-sample01/module';
 import counterReducer, {ICounterState} from './counter/module';  // default export に counterReducer と命名
-import {Content, ISearchSample01State} from './search-sample-01/Interfaces';
+import {Content, IContent, ISearchSample01State} from './search-sample-01/Interfaces';
 import searchSample01Reducer from './search-sample-01/module';
 
 class InitialState {
@@ -24,7 +24,7 @@ class InitialState {
   };
 
   public static searchSample01: ISearchSample01State = {
-    searchResults: [],
+    searchResults: undefined,
   };
 }
 

@@ -11,7 +11,7 @@ interface IProps {
 
 const SearchSample01 = (props: IProps) => {
   const {searchResults} = props.value;
-  const {updateState} = props.actions;
+  const {search} = props.actions;
   return (
     <PortfolioPageOutline
       title="Search Sample 01"
@@ -22,7 +22,7 @@ const SearchSample01 = (props: IProps) => {
       desc="Web Api の検索サンプルです"
     >
       <SearchSample01Core searchResults={searchResults}
-                          onSearch={updateState}
+                          onSearch={search}
       />
     </PortfolioPageOutline>
   );
