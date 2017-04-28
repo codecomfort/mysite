@@ -24,7 +24,8 @@ class InitialState {
   };
 
   public static searchSample01: ISearchSample01State = {
-    searchResults: undefined,
+    searchResults: [],
+    searchWord: '',
   };
 }
 

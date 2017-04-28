@@ -5,15 +5,17 @@ export interface IContent {
 
 export interface ISearchSample01State {
   searchResults?: IContent[];
+  searchWord?: string;
 }
 
 export class ActionTypes {
   public static SEARCH = 'searchsample01/search';
+  public static UPDATE_INPUT_WORD = 'searchsample01/update_input_word';
 }
 
 export interface IAction {
   type: ActionTypes;
-  payload: ISearchSpec;
+  payload: IContent | string;
 }
 
 export class Content implements IContent {
@@ -24,9 +26,4 @@ export class Content implements IContent {
     this.id = id;
     this.desc = desc;
   }
-}
-
-export interface ISearchSpec {
-  word: string;
-  // いろいろ検索条件を定義する予定
 }
