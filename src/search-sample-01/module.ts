@@ -6,16 +6,33 @@ import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
 export const reducer = (state: ISearchSample01State, action: IAction) => {
   let current;
   let next;
+  let newValue;
   switch (action.type) {
     case ActionTypes.SEARCH:
       const searchResult = action.payload as IContent;
       return mergeSearchResults(state, searchResult);
 
-    case ActionTypes.UPDATE_INPUT_WORD:
-      const searchWord = action.payload as string;
+    case ActionTypes.UPDATE_FROM:
+      newValue = action.payload as string;
       current = Im.fromJS(state);
       next = current.merge({
-        searchWord: searchWord,
+        from: newValue,
+      });
+
+      return next.toJS();
+    case ActionTypes.UPDATE_TO:
+      newValue = action.payload as string;
+      current = Im.fromJS(state);
+      next = current.merge({
+        to: newValue,
+      });
+
+      return next.toJS();
+    case ActionTypes.UPDATE_CLASS:
+      newValue = action.payload as string;
+      current = Im.fromJS(state);
+      next = current.merge({
+        cls: newValue,
       });
 
       return next.toJS();
@@ -55,10 +72,24 @@ export class ActionDispatcher {
     this.store = store;
   }
 
-  public handleOnChange = (e: object, newValue: string) => {
+  public handleOnFromChange = (e: object, index: number, newValue: string) => {
     this.dispatch({
       payload: newValue,
-      type: ActionTypes.UPDATE_INPUT_WORD,
+      type: ActionTypes.UPDATE_FROM,
+    });
+  }
+
+  public handleOnToChange = (e: object, index: number, newValue: string) => {
+    this.dispatch({
+      payload: newValue,
+      type: ActionTypes.UPDATE_TO,
+    });
+  }
+
+  public handleOnClassChange = (e: object, index: number, newValue: string) => {
+    this.dispatch({
+      payload: newValue,
+      type: ActionTypes.UPDATE_CLASS,
     });
   }
 
@@ -67,17 +98,17 @@ export class ActionDispatcher {
 
     const state = this.store.getState().searchSample01;
 
-    if (!state.searchWord) {
+    if (!state.from || !state.to || !state.cls) {
       return;
     }
-    const params = state.searchWord.split('&');
+
     const config: AxiosRequestConfig = {
       method: 'POST',
       url: 'https://dv1l86z113.execute-api.ap-northeast-1.amazonaws.com/prod/Search',
       data: {
-        from: params[0].split('=')[1],
-        to: params[1].split('=')[1],
-        class: params[2].split('=')[1],
+        from: state.from,
+        to: state.to,
+        class: state.cls,
       },
       headers: {
         'Content-Type': 'application/json',

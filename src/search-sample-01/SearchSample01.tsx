@@ -10,19 +10,28 @@ interface IProps {
 }
 
 const SearchSample01 = (props: IProps) => {
-  const {searchResults} = props.value;
-  const { handleOnChange, handleOnSearch } = props.actions;
+  const { cls, from, to, searchResults} = props.value;
+  const { handleOnFromChange, handleOnToChange, handleOnClassChange, handleOnSearch } = props.actions;
   return (
     <PortfolioPageOutline
       title="Search Sample 01"
       link={{
-        href: '',
-        title: '',
+        href: 'http://qiita.com/uryyyyyyy/items/d8bae6a7fca1c4732696',
+        title: 'ReduxでのMiddleware不要論',
       }}
-      desc="Web Api の検索サンプルです"
+      desc="非同期アクセスのサンプルです。バックエンドの AWS Lambda 経由で Web Api へアクセスし結果を取得します。参考リンクにもあるように、非同期制御に middleware を使用していません。Web Api は高速.jp を使用しています。"
+
     >
       <SearchSample01Core searchResults={searchResults}
-                          onChange={ handleOnChange }
+                          onFromChange={handleOnFromChange}
+                          onToChange={handleOnToChange}
+                          onClassChange={handleOnClassChange}
+                          from={from}
+                          froms={['柏','三郷']}
+                          to={to}
+                          tos={['土浦北', '水戸']}
+                          cls={cls}
+                          classes={['普通車', '軽']}
                           onSearch={ handleOnSearch }
       />
     </PortfolioPageOutline>

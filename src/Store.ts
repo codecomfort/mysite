@@ -24,8 +24,10 @@ class InitialState {
   };
 
   public static searchSample01: ISearchSample01State = {
+    from: '',
     searchResults: [],
-    searchWord: '',
+    cls: '',
+    to: '',
   };
 }
 

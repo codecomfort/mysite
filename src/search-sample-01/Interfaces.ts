@@ -5,12 +5,17 @@ export interface IContent {
 
 export interface ISearchSample01State {
   searchResults?: IContent[];
-  searchWord?: string;
+  // ['class']: string;
+  cls: string;
+  from: string;
+  to: string;
 }
 
 export class ActionTypes {
   public static SEARCH = 'searchsample01/search';
-  public static UPDATE_INPUT_WORD = 'searchsample01/update_input_word';
+  public static UPDATE_FROM = 'searchsample01/update_from';
+  public static UPDATE_TO = 'searchsample01/update_to';
+  public static UPDATE_CLASS = 'searchsample01/update_class';
 }
 
 export interface IAction {
